@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 3 - Semantic HTML Structure</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <header class="day-header">
+      <h1>Day 3: Semantic HTML Structure</h1>
+      <p class="day-tag">Better Organization</p>
+    </header>
+
+    <main class="day-content">
+      <section class="content-block">
+        <h2>What You'll Learn Today</h2>
+        <ul>
+          <li>Use semantic HTML tags for better structure</li>
+          <li>Build with &lt;header&gt;, &lt;nav&gt;, &lt;main&gt;, &lt;section&gt;</li>
+          <li>Understand the importance of clean organization</li>
+          <li>Create a properly structured webpage</li>
+        </ul>
+      </section>
+
+      <section class="content-block">
+        <h2>What is Semantic HTML?</h2>
+        <p>Semantic HTML uses tags that clearly describe their meaning. This helps:</p>
+        <ul>
+          <li>Search engines understand your content</li>
+          <li>Screen readers help visually impaired users</li>
+          <li>Other developers understand your code</li>
+          <li>Your page is more organized and maintainable</li>
+        </ul>
+      </section>
+
+      <section class="content-block">
+        <h2>Semantic Tags You Need</h2>
+        <div class="tag-list">
+          <div class="tag-item">
+            <strong>&lt;header&gt;</strong> - Top section of page (logo, title)
+          </div>
+          <div class="tag-item">
+            <strong>&lt;nav&gt;</strong> - Navigation menu
+          </div>
+          <div class="tag-item">
+            <strong>&lt;main&gt;</strong> - The main content area
+          </div>
+          <div class="tag-item">
+            <strong>&lt;section&gt;</strong> - A thematic grouping of content
+          </div>
+          <div class="tag-item">
+            <strong>&lt;article&gt;</strong> - Independent, self-contained content
+          </div>
+          <div class="tag-item">
+            <strong>&lt;aside&gt;</strong> - Sidebar or related content
+          </div>
+          <div class="tag-item">
+            <strong>&lt;footer&gt;</strong> - Bottom section (copyright, links)
+          </div>
+        </div>
+      </section>
+
+      <section class="content-block">
+        <h2>Basic Page Structure</h2>
+        <div class="code-block">
+&lt;!DOCTYPE html&gt;<br>
+&lt;html&gt;<br>
+&lt;head&gt;...&lt;/head&gt;<br>
+&lt;body&gt;<br>
+&nbsp;&nbsp;&lt;header&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;My Website&lt;/h1&gt;<br>
+&nbsp;&nbsp;&lt;/header&gt;<br>
+<br>
+&nbsp;&nbsp;&lt;nav&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href="home.html"&gt;Home&lt;/a&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href="about.html"&gt;About&lt;/a&gt;<br>
+&nbsp;&nbsp;&lt;/nav&gt;<br>
+<br>
+&nbsp;&nbsp;&lt;main&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;section&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;Welcome&lt;/h2&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Content here&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/section&gt;<br>
+&nbsp;&nbsp;&lt;/main&gt;<br>
+<br>
+&nbsp;&nbsp;&lt;footer&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;&copy; 2024 My Website&lt;/p&gt;<br>
+&nbsp;&nbsp;&lt;/footer&gt;<br>
+&lt;/body&gt;<br>
+&lt;/html&gt;
+        </div>
+      </section>
+
+      <section class="content-block">
+        <h2>Why Structure Matters</h2>
+        <ul>
+          <li><strong>For Search Engines:</strong> They can identify important content easier</li>
+          <li><strong>For Accessibility:</strong> Screen readers navigate better</li>
+          <li><strong>For Styling:</strong> CSS targets are clearer and more meaningful</li>
+          <li><strong>For Maintenance:</strong> Your code is easier to read and update</li>
+        </ul>
+      </section>
+
+      <section class="content-block">
+        <h2>Your Task for Today</h2>
+        <p><strong>Reorganize your website with semantic structure:</strong></p>
+        <ul>
+          <li>Add a &lt;header&gt; with your site title</li>
+          <li>Create a &lt;nav&gt; with 2-3 navigation links</li>
+          <li>Wrap your content in &lt;main&gt; and &lt;section&gt; tags</li>
+          <li>Add a &lt;footer&gt; with copyright info</li>
+        </ul>
+      </section>
+
+      <div class="nav-buttons">
+        <a href="day2.html" class="btn-back">← Day 2</a>
+        <a href="index.html" class="btn-back">Back to Plan</a>
+        <a href="day4.html" class="btn-next">Day 4 →</a>
+      </div>
+    </main>
+
+    <footer>
+      Day 3 of 15 - Clean structure is the foundation of good web development!
+    </footer>
+  </div>
+</body>
+</html>

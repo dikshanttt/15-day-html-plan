@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 8 - Flexbox Layout</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <header class="day-header">
+      <h1>Day 8: Flexbox Layout</h1>
+      <p class="day-tag">Powerful CSS Layout</p>
+    </header>
+
+    <main class="day-content">
+      <section class="content-block">
+        <h2>What You'll Learn Today</h2>
+        <ul>
+          <li>What Flexbox is and why it's powerful</li>
+          <li>Create flexible layouts that adapt</li>
+          <li>Center elements easily</li>
+          <li>Build horizontal and vertical layouts</li>
+        </ul>
+      </section>
+
+      <section class="content-block">
+        <h2>What is Flexbox?</h2>
+        <p>Flexbox is a modern CSS layout method that makes arranging elements incredibly easy. It automatically spaces and aligns items for you.</p>
+        <p>Instead of fighting with positioning, Flexbox:</p>
+        <ul>
+          <li>Centers items perfectly</li>
+          <li>Distributes space automatically</li>
+          <li>Reflows content responsively</li>
+          <li>Simplifies complicated layouts</li>
+        </ul>
+      </section>
+
+      <section class="content-block">
+        <h2>Basic Flexbox Setup</h2>
+        <p>To use Flexbox, add <code>display: flex;</code> to a container:</p>
+        <div class="code-block">
+.container {<br>
+&nbsp;&nbsp;display: flex;<br>
+}
+        </div>
+        <p>All direct children automatically become flexible items!</p>
+      </section>
+
+      <section class="content-block">
+        <h2>Key Flexbox Properties</h2>
+        <div class="tag-list">
+          <div class="tag-item">
+            <strong>justify-content:</strong> Align items horizontally
+          </div>
+          <div class="tag-item">
+            <strong>align-items:</strong> Align items vertically
+          </div>
+          <div class="tag-item">
+            <strong>flex-direction:</strong> row or column
+          </div>
+          <div class="tag-item">
+            <strong>gap:</strong> Space between items
+          </div>
+          <div class="tag-item">
+            <strong>flex-wrap:</strong> Wrap items to next line
+          </div>
+        </div>
+      </section>
+
+      <section class="content-block">
+        <h2>Justify Content Values</h2>
+        <div class="code-block">
+justify-content: flex-start;&nbsp;&nbsp;&nbsp;&nbsp;/* Left aligned */<br>
+justify-content: center;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* Centered */<br>
+justify-content: flex-end;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* Right aligned */<br>
+justify-content: space-between;&nbsp;/* Space between items */<br>
+justify-content: space-around;&nbsp;&nbsp;/* Space around items */<br>
+justify-content: space-evenly;&nbsp;&nbsp;/* Even spacing */<br>
+        </div>
+      </section>
+
+      <section class="content-block">
+        <h2>Complete Flexbox Example</h2>
+        <div class="code-block">
+.navbar {<br>
+&nbsp;&nbsp;display: flex;<br>
+&nbsp;&nbsp;justify-content: space-between;<br>
+&nbsp;&nbsp;align-items: center;<br>
+&nbsp;&nbsp;gap: 20px;<br>
+&nbsp;&nbsp;background-color: #333;<br>
+&nbsp;&nbsp;padding: 10px 20px;<br>
+}<br>
+<br>
+.nav-items {<br>
+&nbsp;&nbsp;display: flex;<br>
+&nbsp;&nbsp;gap: 15px;<br>
+}<br>
+<br>
+.card-container {<br>
+&nbsp;&nbsp;display: flex;<br>
+&nbsp;&nbsp;gap: 20px;<br>
+&nbsp;&nbsp;flex-wrap: wrap;<br>
+&nbsp;&nbsp;justify-content: center;<br>
+}
+        </div>
+      </section>
+
+      <section class="content-block">
+        <h2>Center Anything with Flexbox</h2>
+        <p>To perfectly center content horizontally AND vertically:</p>
+        <div class="code-block">
+.center {<br>
+&nbsp;&nbsp;display: flex;<br>
+&nbsp;&nbsp;justify-content: center;&nbsp;&nbsp;/* Horizontal */<br>
+&nbsp;&nbsp;align-items: center;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* Vertical */<br>
+&nbsp;&nbsp;height: 300px;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* Set height */<br>
+}
+        </div>
+      </section>
+
+      <section class="content-block">
+        <h2>Your Task for Today</h2>
+        <p><strong>Build flexible layouts:</strong></p>
+        <ul>
+          <li>Create a navigation bar using Flexbox</li>
+          <li>Build a card grid that wraps responsively</li>
+          <li>Center a hero section using Flexbox</li>
+          <li>Create a footer with spaced items</li>
+        </ul>
+      </section>
+
+      <div class="nav-buttons">
+        <a href="day7.html" class="btn-back">← Day 7</a>
+        <a href="index.html" class="btn-back">Back to Plan</a>
+        <a href="day9.html" class="btn-next">Day 9 →</a>
+      </div>
+    </main>
+
+    <footer>
+      Day 8 of 15 - Flexbox is a game changer for layouts!
+    </footer>
+  </div>
+</body>
+</html>

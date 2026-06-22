@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 13 - Input Handling</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <header class="day-header">
+      <h1>Day 13: Input Handling</h1>
+      <p class="day-tag">Real-Time Interactions</p>
+    </header>
+
+    <main class="day-content">
+      <section class="content-block">
+        <h2>What You'll Learn Today</h2>
+        <ul>
+          <li>Get user input from forms and text fields</li>
+          <li>Update page content in real-time</li>
+          <li>Build a counter</li>
+          <li>Create a live preview feature</li>
+        </ul>
+      </section>
+
+      <section class="content-block">
+        <h2>Getting Input Values</h2>
+        <p>Access user input with the <code>.value</code> property:</p>
+        <div class="code-block">
+&lt;input type="text" id="nameInput"&gt;<br>
+&lt;button id="submitBtn"&gt;Submit&lt;/button&gt;<br>
+<br>
+&lt;script&gt;<br>
+let btn = document.getElementById("submitBtn");<br>
+let input = document.getElementById("nameInput");<br>
+<br>
+btn.addEventListener("click", function() {<br>
+&nbsp;&nbsp;let name = input.value;<br>
+&nbsp;&nbsp;console.log("User entered: " + name);<br>
+});<br>
+&lt;/script&gt;
+        </div>
+      </section>
+
+      <section class="content-block">
+        <h2>Real-Time Input (input event)</h2>
+        <p>Update content as the user types:</p>
+        <div class="code-block">
+&lt;input type="text" id="liveInput"&gt;<br>
+&lt;p&gt;You typed: &lt;span id="output"&gt;&lt;/span&gt;&lt;/p&gt;<br>
+<br>
+&lt;script&gt;<br>
+let input = document.getElementById("liveInput");<br>
+let output = document.getElementById("output");<br>
+<br>
+input.addEventListener("input", function() {<br>
+&nbsp;&nbsp;output.textContent = input.value;<br>
+});<br>
+&lt;/script&gt;
+        </div>
+      </section>
+
+      <section class="content-block">
+        <h2>Building a Counter</h2>
+        <div class="code-block">
+&lt;p&gt;Count: &lt;span id="counter"&gt;0&lt;/span&gt;&lt;/p&gt;<br>
+&lt;button id="increaseBtn"&gt;+&lt;/button&gt;<br>
+&lt;button id="decreaseBtn"&gt;-&lt;/button&gt;<br>
+<br>
+&lt;script&gt;<br>
+let count = 0;<br>
+let display = document.getElementById("counter");<br>
+<br>
+document.getElementById("increaseBtn").addEventListener("click", function() {<br>
+&nbsp;&nbsp;count++;<br>
+&nbsp;&nbsp;display.textContent = count;<br>
+});<br>
+<br>
+document.getElementById("decreaseBtn").addEventListener("click", function() {<br>
+&nbsp;&nbsp;count--;<br>
+&nbsp;&nbsp;display.textContent = count;<br>
+});<br>
+&lt;/script&gt;
+        </div>
+      </section>
+
+      <section class="content-block">
+        <h2>Input Event vs Change Event</h2>
+        <ul>
+          <li><strong>input:</strong> Fires every time the value changes (as you type)</li>
+          <li><strong>change:</strong> Fires when focus leaves the field</li>
+        </ul>
+        <p>For live preview: use <code>input</code></p>
+        <p>For form submission: use <code>change</code> or <code>submit</code></p>
+      </section>
+
+      <section class="content-block">
+        <h2>Live Calculator Example</h2>
+        <div class="code-block">
+&lt;input type="number" id="num1" placeholder="Number 1"&gt;<br>
+&lt;input type="number" id="num2" placeholder="Number 2"&gt;<br>
+&lt;p&gt;Sum: &lt;span id="sum"&gt;0&lt;/span&gt;&lt;/p&gt;<br>
+<br>
+&lt;script&gt;<br>
+let num1 = document.getElementById("num1");<br>
+let num2 = document.getElementById("num2");<br>
+let sum = document.getElementById("sum");<br>
+<br>
+function calculate() {<br>
+&nbsp;&nbsp;let n1 = parseFloat(num1.value) || 0;<br>
+&nbsp;&nbsp;let n2 = parseFloat(num2.value) || 0;<br>
+&nbsp;&nbsp;sum.textContent = n1 + n2;<br>
+}<br>
+<br>
+num1.addEventListener("input", calculate);<br>
+num2.addEventListener("input", calculate);<br>
+&lt;/script&gt;
+        </div>
+      </section>
+
+      <section class="content-block">
+        <h2>Validate User Input</h2>
+        <div class="code-block">
+function validateEmail(email) {<br>
+&nbsp;&nbsp;if (email.includes("@") && email.includes(".")) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return true;<br>
+&nbsp;&nbsp;} else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return false;<br>
+&nbsp;&nbsp;}<br>
+}<br>
+<br>
+let emailInput = document.getElementById("email");<br>
+emailInput.addEventListener("change", function() {<br>
+&nbsp;&nbsp;if (validateEmail(emailInput.value)) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;console.log("Valid email!");<br>
+&nbsp;&nbsp;} else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;console.log("Invalid email!");<br>
+&nbsp;&nbsp;}<br>
+});<br>
+        </div>
+      </section>
+
+      <section class="content-block">
+        <h2>Your Task for Today</h2>
+        <p><strong>Create interactive input features:</strong></p>
+        <ul>
+          <li>Build a live character counter (shows how many characters typed)</li>
+          <li>Create a real-time text preview</li>
+          <li>Build a simple calculator that adds two numbers</li>
+          <li>Add form validation that shows errors</li>
+        </ul>
+      </section>
+
+      <div class="nav-buttons">
+        <a href="day12.html" class="btn-back">← Day 12</a>
+        <a href="index.html" class="btn-back">Back to Plan</a>
+        <a href="day14.html" class="btn-next">Day 14 →</a>
+      </div>
+    </main>
+
+    <footer>
+      Day 13 of 15 - User input makes websites interactive!
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 12 - Events and Interactions</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <header class="day-header">
+      <h1>Day 12: Events and Interactions</h1>
+      <p class="day-tag">Making Things Happen</p>
+    </header>
+
+    <main class="day-content">
+      <section class="content-block">
+        <h2>What You'll Learn Today</h2>
+        <ul>
+          <li>Respond to user actions (clicks, hovers)</li>
+          <li>Use onclick and addEventListener</li>
+          <li>Change content dynamically</li>
+          <li>Create button interactions</li>
+        </ul>
+      </section>
+
+      <section class="content-block">
+        <h2>What are Events?</h2>
+        <p>Events are things users do: clicking buttons, typing in forms, moving the mouse, etc.</p>
+        <p>Your JavaScript can listen for these events and respond!</p>
+      </section>
+
+      <section class="content-block">
+        <h2>Common Events</h2>
+        <div class="tag-list">
+          <div class="tag-item">
+            <strong>click</strong> - User clicks an element
+          </div>
+          <div class="tag-item">
+            <strong>mouseover</strong> - Mouse hovers over element
+          </div>
+          <div class="tag-item">
+            <strong>mouseout</strong> - Mouse leaves element
+          </div>
+          <div class="tag-item">
+            <strong>change</strong> - Form field value changes
+          </div>
+          <div class="tag-item">
+            <strong>submit</strong> - Form is submitted
+          </div>
+          <div class="tag-item">
+            <strong>keypress</strong> - User presses a key
+          </div>
+        </div>
+      </section>
+
+      <section class="content-block">
+        <h2>Method 1: onclick in HTML</h2>
+        <div class="code-block">
+&lt;button onclick="sayHello()"&gt;Click Me&lt;/button&gt;<br>
+<br>
+&lt;script&gt;<br>
+function sayHello() {<br>
+&nbsp;&nbsp;alert("Hello!");<br>
+}<br>
+&lt;/script&gt;
+        </div>
+      </section>
+
+      <section class="content-block">
+        <h2>Method 2: addEventListener (Recommended)</h2>
+        <div class="code-block">
+&lt;button id="myBtn"&gt;Click Me&lt;/button&gt;<br>
+<br>
+&lt;script&gt;<br>
+let button = document.getElementById("myBtn");<br>
+<br>
+button.addEventListener("click", function() {<br>
+&nbsp;&nbsp;alert("Button was clicked!");<br>
+});<br>
+&lt;/script&gt;
+        </div>
+      </section>
+
+      <section class="content-block">
+        <h2>Change HTML Content</h2>
+        <div class="code-block">
+&lt;p id="message"&gt;Original text&lt;/p&gt;<br>
+&lt;button id="changeBtn"&gt;Change Text&lt;/button&gt;<br>
+<br>
+&lt;script&gt;<br>
+let btn = document.getElementById("changeBtn");<br>
+let msg = document.getElementById("message");<br>
+<br>
+btn.addEventListener("click", function() {<br>
+&nbsp;&nbsp;msg.textContent = "Text has been changed!";<br>
+});<br>
+&lt;/script&gt;
+        </div>
+      </section>
+
+      <section class="content-block">
+        <h2>Change CSS with JavaScript</h2>
+        <div class="code-block">
+&lt;div id="box"&gt;Click me&lt;/div&gt;<br>
+<br>
+&lt;script&gt;<br>
+let box = document.getElementById("box");<br>
+<br>
+box.addEventListener("click", function() {<br>
+&nbsp;&nbsp;box.style.backgroundColor = "blue";<br>
+&nbsp;&nbsp;box.style.color = "white";<br>
+});<br>
+&lt;/script&gt;
+        </div>
+      </section>
+
+      <section class="content-block">
+        <h2>Toggle Classes</h2>
+        <div class="code-block">
+&lt;style&gt;<br>
+&nbsp;&nbsp;.active {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;background-color: blue;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;color: white;<br>
+&nbsp;&nbsp;}<br>
+&lt;/style&gt;<br>
+<br>
+&lt;button id="toggleBtn"&gt;Toggle&lt;/button&gt;<br>
+<br>
+&lt;script&gt;<br>
+let btn = document.getElementById("toggleBtn");<br>
+<br>
+btn.addEventListener("click", function() {<br>
+&nbsp;&nbsp;btn.classList.toggle("active");<br>
+});<br>
+&lt;/script&gt;
+        </div>
+      </section>
+
+      <section class="content-block">
+        <h2>Your Task for Today</h2>
+        <p><strong>Create interactive elements:</strong></p>
+        <ul>
+          <li>Create a button that changes text when clicked</li>
+          <li>Create a button that changes background color</li>
+          <li>Create a toggle button that adds/removes a class</li>
+          <li>Add a hover effect that changes content</li>
+        </ul>
+      </section>
+
+      <div class="nav-buttons">
+        <a href="day11.html" class="btn-back">← Day 11</a>
+        <a href="index.html" class="btn-back">Back to Plan</a>
+        <a href="day13.html" class="btn-next">Day 13 →</a>
+      </div>
+    </main>
+
+    <footer>
+      Day 12 of 15 - Your website is becoming interactive!
+    </footer>
+  </div>
+</body>
+</html>

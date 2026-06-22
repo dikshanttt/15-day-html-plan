@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 7 - Box Model and Spacing</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <header class="day-header">
+      <h1>Day 7: Box Model and Spacing</h1>
+      <p class="day-tag">Layout Fundamentals</p>
+    </header>
+
+    <main class="day-content">
+      <section class="content-block">
+        <h2>What You'll Learn Today</h2>
+        <ul>
+          <li>Understand the CSS Box Model</li>
+          <li>Master margins and padding</li>
+          <li>Add borders and rounded corners</li>
+          <li>Control element spacing</li>
+        </ul>
+      </section>
+
+      <section class="content-block">
+        <h2>The CSS Box Model</h2>
+        <p>Every HTML element is a box with 4 layers (from inside out):</p>
+        <ul>
+          <li><strong>Content</strong> - The actual element (text, image)</li>
+          <li><strong>Padding</strong> - Space inside the box (around content)</li>
+          <li><strong>Border</strong> - Line around the padding</li>
+          <li><strong>Margin</strong> - Space outside the box (between elements)</li>
+        </ul>
+      </section>
+
+      <section class="content-block">
+        <h2>Padding vs Margin</h2>
+        <p><strong>Padding:</strong> Space INSIDE the element</p>
+        <div class="code-block">
+p {<br>
+&nbsp;&nbsp;padding: 20px;&nbsp;&nbsp;&nbsp;&nbsp;/* All sides */<br>
+&nbsp;&nbsp;padding-top: 10px;<br>
+&nbsp;&nbsp;padding-right: 15px;<br>
+&nbsp;&nbsp;padding-bottom: 10px;<br>
+&nbsp;&nbsp;padding-left: 15px;<br>
+}
+        </div>
+        <p><strong>Margin:</strong> Space OUTSIDE the element</p>
+        <div class="code-block">
+p {<br>
+&nbsp;&nbsp;margin: 20px;&nbsp;&nbsp;&nbsp;&nbsp;/* All sides */<br>
+&nbsp;&nbsp;margin-top: 10px;<br>
+&nbsp;&nbsp;margin-bottom: 10px;<br>
+}
+        </div>
+      </section>
+
+      <section class="content-block">
+        <h2>Borders</h2>
+        <p>Add borders around elements:</p>
+        <div class="code-block">
+div {<br>
+&nbsp;&nbsp;border: 2px solid black;<br>
+&nbsp;&nbsp;border-radius: 8px;&nbsp;&nbsp;/* Rounded corners */<br>
+}
+        </div>
+        <p>Border styles: <code>solid, dashed, dotted, double</code></p>
+      </section>
+
+      <section class="content-block">
+        <h2>Complete Box Example</h2>
+        <div class="code-block">
+.card {<br>
+&nbsp;&nbsp;background-color: white;<br>
+&nbsp;&nbsp;padding: 20px;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* Inside space */<br>
+&nbsp;&nbsp;margin: 15px;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* Outside space */<br>
+&nbsp;&nbsp;border: 1px solid #ddd;<br>
+&nbsp;&nbsp;border-radius: 8px;<br>
+&nbsp;&nbsp;box-shadow: 0 2px 4px rgba(0,0,0,0.1);<br>
+}
+        </div>
+      </section>
+
+      <section class="content-block">
+        <h2>Quick Reference</h2>
+        <div class="tag-list">
+          <div class="tag-item">
+            <strong>padding: 10px;</strong> - All sides
+          </div>
+          <div class="tag-item">
+            <strong>padding: 10px 20px;</strong> - Top/bottom, Left/right
+          </div>
+          <div class="tag-item">
+            <strong>padding: 10px 20px 15px 25px;</strong> - Top, Right, Bottom, Left
+          </div>
+          <div class="tag-item">
+            <strong>margin: auto;</strong> - Center the element
+          </div>
+        </div>
+      </section>
+
+      <section class="content-block">
+        <h2>Your Task for Today</h2>
+        <p><strong>Style elements with spacing:</strong></p>
+        <ul>
+          <li>Create card-like boxes with padding</li>
+          <li>Add borders with rounded corners</li>
+          <li>Space cards apart using margins</li>
+          <li>Add box-shadow for depth</li>
+        </ul>
+      </section>
+
+      <div class="nav-buttons">
+        <a href="day6.html" class="btn-back">← Day 6</a>
+        <a href="index.html" class="btn-back">Back to Plan</a>
+        <a href="day8.html" class="btn-next">Day 8 →</a>
+      </div>
+    </main>
+
+    <footer>
+      Day 7 of 15 - Spacing is crucial for good design!
+    </footer>
+  </div>
+</body>
+</html>
