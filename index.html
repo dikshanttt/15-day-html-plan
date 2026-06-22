@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>15-Day Frontend Training — College Sessions</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg:#f5f4f0;--paper:#fff;--ink:#17181c;--muted:#7c7b78;--rule:#e8e6e0;
+  --html:#d4460f;--css:#1d4ed8;--js:#a16207;--proj:#15803d;
+  --html-s:#fff3ee;--css-s:#eff6ff;--js-s:#fefce8;--proj-s:#f0fdf4;
+  --font:'Outfit',sans-serif;--mono:'JetBrains Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.6;min-height:100vh}
+
+/* HEADER */
+header{background:var(--ink);color:#fff;padding:48px 28px 40px;overflow:hidden;position:relative}
+header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 100% 50%,rgba(212,70,15,.18),transparent 70%);pointer-events:none}
+.h-inner{max-width:860px;margin:0 auto;position:relative}
+.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:12px}
+header h1{font-size:clamp(1.7rem,4.5vw,2.8rem);font-weight:700;letter-spacing:-.03em;line-height:1.15;margin-bottom:10px}
+header h1 span{color:var(--html)}
+header p{color:rgba(255,255,255,.45);font-size:.88rem;font-weight:300;max-width:460px;margin-bottom:24px}
+.meta-pills{display:flex;gap:10px;flex-wrap:wrap}
+.mpill{font-family:var(--mono);font-size:10px;letter-spacing:.06em;padding:4px 13px;border-radius:100px;border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.45)}
+.mpill.a{border-color:rgba(212,70,15,.5);color:#f97316}
+
+/* WEEK STRIP */
+.week-strip{background:var(--paper);border-bottom:1px solid var(--rule);display:flex;overflow-x:auto;scrollbar-width:none}
+.week-strip::-webkit-scrollbar{display:none}
+.wtab{flex:1;min-width:80px;padding:12px 10px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;border:none;background:none;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;white-space:nowrap;text-align:center}
+.wtab:hover{color:var(--ink)}
+.wtab.active{color:var(--ink);border-bottom-color:var(--ink);font-weight:600}
+
+/* DAY TABS */
+.day-strip{background:var(--paper);border-bottom:1px solid var(--rule);display:flex;overflow-x:auto;scrollbar-width:none;padding:0 8px;position:sticky;top:0;z-index:40}
+.day-strip::-webkit-scrollbar{display:none}
+.dtab{padding:10px 14px;font-family:var(--mono);font-size:11px;border:none;background:none;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;white-space:nowrap}
+.dtab:hover{color:var(--ink)}
+.dtab.active{color:var(--ink);border-bottom-color:var(--ink)}
+.dtab[data-type=html].active{border-bottom-color:var(--html);color:var(--html)}
+.dtab[data-type=css].active{border-bottom-color:var(--css);color:var(--css)}
+.dtab[data-type=js].active{border-bottom-color:var(--js);color:var(--js)}
+.dtab[data-type=proj].active{border-bottom-color:var(--proj);color:var(--proj)}
+
+/* MAIN */
+main{max-width:860px;margin:0 auto;padding:32px 20px 80px}
+.day-panel{display:none}.day-panel.active{display:block}
+
+/* DAY HEADER */
+.dh{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:28px;flex-wrap:wrap}
+.dh-left{}
+.dh-meta{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.dh-title{font-size:1.5rem;font-weight:700;letter-spacing:-.025em;line-height:1.2}
+.dh-sub{font-size:.83rem;color:var(--muted);margin-top:5px;font-weight:400}
+.badge{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:100px;flex-shrink:0;margin-top:4px}
+.badge-html{background:var(--html-s);color:var(--html)}
+.badge-css{background:var(--css-s);color:var(--css)}
+.badge-js{background:var(--js-s);color:var(--js)}
+.badge-proj{background:var(--proj-s);color:var(--proj)}
+
+/* SESSION BLOCK */
+.slabel{font-family:var(--mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.session-card{background:var(--paper);border:1px solid var(--rule);border-radius:12px;overflow:hidden;margin-bottom:22px}
+.srow{display:grid;grid-template-columns:90px 1fr;border-bottom:1px solid var(--rule)}
+.srow:last-child{border-bottom:none}
+.stime{padding:12px 14px;font-family:var(--mono);font-size:10px;color:var(--muted);background:var(--bg);border-right:1px solid var(--rule);display:flex;align-items:center;line-height:1.3;letter-spacing:.02em}
+.sact{padding:12px 16px}
+.sact.hl-html{border-left:3px solid var(--html);background:linear-gradient(90deg,rgba(212,70,15,.04),transparent)}
+.sact.hl-css{border-left:3px solid var(--css);background:linear-gradient(90deg,rgba(29,78,216,.04),transparent)}
+.sact.hl-js{border-left:3px solid var(--js);background:linear-gradient(90deg,rgba(161,98,7,.04),transparent)}
+.sact.hl-proj{border-left:3px solid var(--proj);background:linear-gradient(90deg,rgba(21,128,61,.04),transparent)}
+.sact.hl-break{opacity:.6}
+.sname{font-weight:600;font-size:.85rem;margin-bottom:2px}
+.sdetail{font-size:.78rem;color:var(--muted);line-height:1.5}
+
+/* TWO COL */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:22px}
+@media(max-width:580px){.two{grid-template-columns:1fr}}
+.box{background:var(--paper);border:1px solid var(--rule);border-radius:12px;padding:18px}
+.box-label{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.tlist{list-style:none;display:flex;flex-direction:column;gap:7px}
+.tlist li{font-size:.82rem;display:flex;align-items:baseline;gap:8px;line-height:1.4}
+.tlist li::before{content:'›';color:var(--muted);flex-shrink:0;font-size:.9rem}
+
+/* HOMEWORK */
+.hw{border-radius:12px;padding:20px 22px;margin-bottom:22px;border:1.5px solid}
+.hw-html{background:var(--html-s);border-color:rgba(212,70,15,.2)}
+.hw-css{background:var(--css-s);border-color:rgba(29,78,216,.18)}
+.hw-js{background:var(--js-s);border-color:rgba(161,98,7,.22)}
+.hw-proj{background:var(--proj-s);border-color:rgba(21,128,61,.22)}
+.hw-tag{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:8px}
+.hw-html .hw-tag{color:var(--html)}.hw-css .hw-tag{color:var(--css)}.hw-js .hw-tag{color:var(--js)}.hw-proj .hw-tag{color:var(--proj)}
+.hw-name{font-size:.98rem;font-weight:700;margin-bottom:6px;line-height:1.35}
+.hw-desc{font-size:.8rem;color:var(--muted);margin-bottom:12px;line-height:1.55}
+.hw-list{list-style:none;display:flex;flex-direction:column;gap:6px}
+.hw-list li{font-size:.8rem;color:#444;display:flex;align-items:baseline;gap:8px}
+.hw-list li::before{content:'☐';font-size:.9rem;flex-shrink:0;color:var(--muted)}
+.hw-time{display:inline-block;margin-top:12px;font-family:var(--mono);font-size:10px;padding:3px 10px;border-radius:100px;background:rgba(0,0,0,.06);color:var(--muted);letter-spacing:.04em}
+
+/* TIP */
+.tip{background:var(--paper);border:1px solid var(--rule);border-radius:10px;padding:14px 16px;font-size:.8rem;color:var(--muted);display:flex;gap:10px;margin-bottom:22px}
+.tip-i{flex-shrink:0;font-size:1rem}
+
+/* PREV NEXT */
+.pnav{display:flex;justify-content:space-between;align-items:center;padding-top:20px;border-top:1px solid var(--rule);margin-top:8px}
+.pnav-btn{font-family:var(--mono);font-size:11px;padding:9px 18px;border-radius:8px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);cursor:pointer;transition:background .15s}
+.pnav-btn:hover{background:var(--bg)}.pnav-btn:disabled{opacity:.28;cursor:default}
+.pnav-label{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.1em}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="h-inner">
+    <p class="eyebrow">College Training · Sun–Fri · 3:30–4:30 PM</p>
+    <h1>15-Day <span>Frontend</span> Training</h1>
+    <p>One focused hour each evening. Structured for someone who knows the basics and needs to build confidently.</p>
+    <div class="meta-pills">
+      <span class="mpill a">⏱ 3:30 – 4:30 PM</span>
+      <span class="mpill">Sun – Fri</span>
+      <span class="mpill">HTML · CSS · JS</span>
+      <span class="mpill">Intermediate Beginner</span>
+    </div>
+  </div>
+</header>
+
+<div class="week-strip" id="weekStrip"></div>
+<div class="day-strip" id="dayStrip"></div>
+
+<main id="main"></main>
+
+<script>
+const days = [
+ // ── WEEK 1: HTML ──────────────────────────────────────────────
+ {
+  week:1, type:"html",
+  title:"Semantic HTML Refresh",
+  sub:"Fix the bad habits — structure a page the right way from the start",
+  schedule:[
+    {t:"3:30–3:35", n:"Quick Check-in", d:"Ask: what do they already know? What confuses them? Set the tone: we build, not just read.", hl:"html"},
+    {t:"3:35–3:55", n:"Live Demo: Semantic Tags", d:"Open VS Code. Build a page using header, nav, main, section, article, aside, footer together. Explain each tag's role vs div.", hl:"html"},
+    {t:"3:55–4:15", n:"Their Turn: Rebuild It", d:"They close your demo and build the same skeleton from memory. You walk around and spot-check.", hl:"html"},
+    {t:"4:15–4:25", n:"Common Mistakes Review", d:"Show 3 bad examples: all divs, wrong nesting, missing alt on img. Fix them together.", hl:"html"},
+    {t:"4:25–4:30", n:"Homework Brief", d:"Explain tonight's task. Answer questions. Keep it to 30 min of work.", hl:"break"},
+  ],
+  topics:["header, nav, main, section, article, aside, footer","div vs span — when each is right","Nesting rules","HTML comments","img alt attribute","title vs h1"],
+  hw:{name:"Semantic Page Structure",desc:"Build a simple blog homepage — no CSS, pure structure only.",time:"~30 min",
+    list:["header with nav (4 links)","main with 2 article elements","Each article: h2, paragraph, a 'Read more' link","aside with 'About the author' text","footer with copyright"]}
+ },
+ {
+  week:1, type:"html",
+  title:"Forms Done Right",
+  sub:"Every real website has a form — make sure yours is accessible and correct",
+  schedule:[
+    {t:"3:30–3:35", n:"Homework Review", d:"Open 2–3 student files. Check: is semantic structure solid? Any missing alt or wrong nesting?", hl:"html"},
+    {t:"3:35–3:55", n:"Forms Deep Dive", d:"Build a contact form together: label+input pairing (for/id), input types (text, email, tel, date), textarea, select, checkbox, radio, submit.", hl:"html"},
+    {t:"3:55–4:10", n:"Why Labels Matter", d:"Show what happens with and without label. Discuss accessibility — click the label, it focuses the input. Screen reader context.", hl:"html"},
+    {t:"4:10–4:25", n:"Lab: Registration Form", d:"They build a college event registration form from scratch. Name, email, course (select), year (radio), interests (checkboxes), message.", hl:"html"},
+    {t:"4:25–4:30", n:"Homework Brief", d:"", hl:"break"},
+  ],
+  topics:["form action and method attributes","label for= paired with input id=","Input types: text, email, tel, number, date, password","textarea, select+option","checkbox vs radio","button type='submit' vs type='button'"],
+  hw:{name:"Student Profile Form",desc:"A complete profile form a student fills on day one of a new course.",time:"~30 min",
+    list:["Full name, email, phone (correct input types for each)","Course selection using select + at least 5 options","Year of study using radio buttons","3+ checkboxes for subjects of interest","Short bio textarea","Submit button labelled 'Save Profile'"]}
+ },
+ {
+  week:1, type:"html",
+  title:"Tables & Multi-Page Sites",
+  sub:"Linking pages together and displaying data in a grid",
+  schedule:[
+    {t:"3:30–3:35", n:"Form HW Review", d:"Quick check: label-for-id pairing correct on all inputs?", hl:"html"},
+    {t:"3:35–3:50", n:"HTML Tables", d:"table, tr, th, td. thead/tbody. When to use tables (data) vs when not to (layout). colspan demo.", hl:"html"},
+    {t:"3:50–4:05", n:"Lab: Build a Timetable", d:"Their own weekly college timetable as an HTML table. Days as th headers, subjects as td.", hl:"html"},
+    {t:"4:05–4:20", n:"Multi-Page Sites", d:"Create index.html + about.html. Link with anchor tags. Relative paths. target='_blank'. Internal page anchors (#id).", hl:"html"},
+    {t:"4:20–4:30", n:"Review + Homework Brief", d:"Show folder structure: project/ → index.html, about.html, images/", hl:"break"},
+  ],
+  topics:["table, tr, th, td — proper structure","thead, tbody, tfoot","Relative vs absolute URLs","Anchor tag — href, target, title","Internal anchors: href='#section'","Folder structure and file naming"],
+  hw:{name:"Two-Page Mini Site",desc:"A two-page site linked together — homepage and an about page.",time:"~35 min",
+    list:["index.html with a nav linking to about.html","about.html with a nav linking back to index.html","A table on index.html (could be a schedule, comparison, etc.)","At least 1 image with correct alt text on each page","An internal anchor link that jumps to a section on the same page"]}
+ },
+ {
+  week:1, type:"html",
+  title:"HTML5 Features & Best Practices",
+  sub:"The modern bits — media, figures, details, and writing clean code",
+  schedule:[
+    {t:"3:30–3:35", n:"Multi-Page HW Check", d:"Do links work both ways? Does folder structure look clean?", hl:"html"},
+    {t:"3:35–3:55", n:"HTML5 Elements", d:"figure + figcaption, details + summary, video (controls, autoplay, muted), audio, picture + srcset (concept only).", hl:"html"},
+    {t:"3:55–4:10", n:"Meta Tags & Head", d:"charset, viewport, description, Open Graph (og:title, og:image) — what they do and why they matter.", hl:"html"},
+    {t:"4:10–4:25", n:"Code Quality Lab", d:"Give a messy HTML file with bad indentation, missing alts, wrong nesting. They fix it. Discuss: readable code is maintainable code.", hl:"html"},
+    {t:"4:25–4:30", n:"Homework Brief", d:"", hl:"break"},
+  ],
+  topics:["figure + figcaption","details + summary (accordion without JS!)","video and audio tags","Meta: charset, viewport, description","Open Graph tags (og:title, og:image)","Clean indentation and code structure"],
+  hw:{name:"Polish & Extend the Mini Site",desc:"Improve the two-page site from Day 3 using today's elements.",time:"~30 min",
+    list:["Add correct meta tags to both pages (charset, viewport, description)","Wrap at least one image in a figure with a figcaption","Add a details+summary FAQ section on the about page","Add a video or audio element (can use a YouTube embed or a free mp4 link)","Fix any indentation or nesting issues"]}
+ },
+ {
+  week:1, type:"html",
+  title:"HTML Week Project",
+  sub:"Build a complete structured webpage without CSS — just clean, semantic HTML",
+  schedule:[
+    {t:"3:30–3:35", n:"Day 4 HW Review", d:"Check meta tags, figure use, details+summary working?", hl:"html"},
+    {t:"3:35–3:45", n:"Project Brief", d:"Build a Personal Portfolio page — HTML only, no styling. Plan sections on paper first: what goes where.", hl:"html"},
+    {t:"3:45–4:20", n:"Build Sprint", d:"They build independently. You circulate and guide. Must include: nav, hero, about, skills list, projects (with table or list), contact form, footer.", hl:"html"},
+    {t:"4:20–4:30", n:"Peer Review", d:"Swap with the person next to them. Check: is semantic structure solid? Heading hierarchy? All images have alt?", hl:"html"},
+  ],
+  topics:["Full page planning before coding","Semantic structure of a portfolio","Heading hierarchy (only one h1)","Combining all Week 1 elements","Clean readable code — proper indentation","HTML validator check: validator.w3.org"],
+  hw:{name:"Finish the Portfolio HTML",desc:"Tonight: get your portfolio.html to a complete, clean, validated HTML structure. This is the base for all CSS next week.",time:"~45 min",
+    list:["All 6 sections complete (nav, hero, about, skills, projects, contact, footer)","One h1 only — heading hierarchy correct throughout","All images have descriptive alt text","Contact section has a proper form (label+input pairs)","Paste into validator.w3.org — fix all errors","Save as portfolio.html — you'll build on this all of next week"]}
+ },
+
+ // ── WEEK 2: CSS ──────────────────────────────────────────────
+ {
+  week:2, type:"css",
+  title:"CSS Foundations & Selectors",
+  sub:"Connecting styles to HTML and understanding how the cascade works",
+  schedule:[
+    {t:"3:30–3:35", n:"Portfolio HTML Check", d:"Everyone opens portfolio.html. Confirm it's complete and validates. This is today's base.", hl:"css"},
+    {t:"3:35–3:50", n:"Linking CSS + Selectors", d:"Create styles.css, link it. Element, .class, #id selectors. Descendant selector (nav a). Specificity order.", hl:"css"},
+    {t:"3:50–4:10", n:"Core Properties", d:"color, background-color, font-size, font-family, text-align, width, height, border, border-radius. Live demo — change and see instantly.", hl:"css"},
+    {t:"4:10–4:25", n:"Lab: Theme the Header", d:"Style only the header + nav of the portfolio. Background, font-family, link colors, nav spacing.", hl:"css"},
+    {t:"4:25–4:30", n:"Homework Brief", d:"", hl:"break"},
+  ],
+  topics:["External CSS — link rel='stylesheet'","Element, .class, #id selectors","Descendant selector (parent child)","color, background-color","font-family with fallback stack","Cascade and specificity: id > class > element"],
+  hw:{name:"Colour & Font Theme",desc:"Apply a consistent colour + font theme to the full portfolio using external CSS.",time:"~30 min",
+    list:["styles.css linked correctly to portfolio.html","Body: background-color and font-family set","Header: distinct background, white text","Nav links: color changed, text-decoration removed","h1 and h2 styled differently from body text","At least 3 custom class selectors used"]}
+ },
+ {
+  week:2, type:"css",
+  title:"Box Model & Spacing",
+  sub:"Every element is a box — master padding, margin, border and nothing will confuse you",
+  schedule:[
+    {t:"3:30–3:35", n:"Theme HW Review", d:"Open 2 files. Check: linked correctly? Classes used (not just element selectors)?", hl:"css"},
+    {t:"3:35–3:55", n:"Box Model Explained", d:"Draw it: content → padding → border → margin. Show DevTools box diagram. Demo: what changes visually when each value changes.", hl:"css"},
+    {t:"3:55–4:05", n:"box-sizing: border-box", d:"Why it exists. Add * { box-sizing: border-box; } to their CSS. Explain why this is always the first thing to add.", hl:"css"},
+    {t:"4:05–4:20", n:"Lab: Card Components", d:"Style the projects section as cards: padding, border, border-radius, box-shadow, margin between cards.", hl:"css"},
+    {t:"4:20–4:30", n:"DevTools Practice + HW Brief", d:"Inspect their own cards in DevTools — see the box model in real time.", hl:"break"},
+  ],
+  topics:["margin, padding, border, content areas","Shorthand: margin: top right bottom left","margin: 0 auto — horizontal centering","box-sizing: border-box — always use this","border: 1px solid color","border-radius","box-shadow: x y blur spread color"],
+  hw:{name:"Project Cards Styled",desc:"Make the projects section in your portfolio look like distinct cards.",time:"~30 min",
+    list:["* { box-sizing: border-box } at top of CSS","Each project card: padding 16px+, border or box-shadow","border-radius: 8px or higher","Margin between cards (not touching each other)","max-width set on each card","Inspect in DevTools and screenshot the box model"]}
+ },
+ {
+  week:2, type:"css",
+  title:"Flexbox Layout",
+  sub:"The layout tool you'll use on every single project — learn it once, use it everywhere",
+  schedule:[
+    {t:"3:30–3:35", n:"Cards HW Review", d:"Are cards using box-sizing correctly? Any margin collapse issues?", hl:"css"},
+    {t:"3:35–3:55", n:"Flexbox Core", d:"display:flex on parent. Main axis vs cross axis. flex-direction. justify-content (main). align-items (cross). gap.", hl:"css"},
+    {t:"3:55–4:10", n:"Lab: Flex Nav", d:"Portfolio nav: logo left, links right. justify-content: space-between. Links evenly spaced using gap.", hl:"css"},
+    {t:"4:10–4:25", n:"Lab: Card Row + Centering", d:"Project cards in a row using flex-wrap:wrap. Hero section: content centered both axes.", hl:"css"},
+    {t:"4:25–4:30", n:"Flexbox Froggy Intro + HW Brief", d:"Show flexboxfroggy.com — assign levels 1–12 for homework.", hl:"break"},
+  ],
+  topics:["display: flex on parent element","flex-direction: row | column","justify-content: flex-start | center | space-between | space-around | space-evenly","align-items: stretch | center | flex-start | flex-end","flex-wrap: wrap","gap property (replaces margin hacks)","Centering: both axes with flex"],
+  hw:{name:"Flex Layout on Portfolio",desc:"Redo the portfolio layout using flexbox — no float, no inline-block.",time:"~35 min",
+    list:["Nav: logo left + links right using justify-content: space-between","Hero: content centered vertically and horizontally","Project cards in a row using flex-wrap: wrap","About section: image + text side by side","gap used instead of margins between flex children","Play Flexbox Froggy up to level 12"]}
+ },
+ {
+  week:2, type:"css",
+  title:"Typography & CSS Variables",
+  sub:"A consistent type system and design tokens that make your whole site update with one change",
+  schedule:[
+    {t:"3:30–3:35", n:"Flex Layout Review", d:"Does the nav flex correctly? Are cards wrapping? Any axis confusion?", hl:"css"},
+    {t:"3:35–3:50", n:"Google Fonts + Typography", d:"fonts.google.com — pick 2 fonts, copy link tag. font-weight, line-height (1.6 rule), letter-spacing, text-transform.", hl:"css"},
+    {t:"3:50–4:05", n:"CSS Variables", d:":root { --var: value } syntax. Apply with var(--var). Change one variable, entire page updates. Show the power live.", hl:"css"},
+    {t:"4:05–4:20", n:"Lab: Variable Theme System", d:"Define --primary, --text, --bg, --accent, --radius, --font-heading, --font-body. Replace all raw values in their CSS.", hl:"css"},
+    {t:"4:20–4:30", n:"Before/After Showcase + HW Brief", d:"Students show portfolio before/after the typography change. Usually a big 'wow' moment.", hl:"break"},
+  ],
+  topics:["Google Fonts — link tag in head","font-family fallback stack","font-weight (300–700)","line-height: 1.5–1.7 for readability","letter-spacing, text-transform, text-decoration","CSS custom properties: --name: value",":root { } — global scope"],
+  hw:{name:"Full Variable Design System",desc:"Replace every raw color and font value in your CSS with variables.",time:"~30 min",
+    list:["2 Google Fonts linked and applied (one display, one body)","At least 6 variables in :root","All colors in CSS use var() — no raw hex","Body: line-height: 1.6, readable font-size","Headings: different font-family from body","Change --primary in one place — confirm the whole site updates"]}
+ },
+ {
+  week:2, type:"css",
+  title:"Responsive Design & Week Project",
+  sub:"Make the portfolio look right on a phone, then present it",
+  schedule:[
+    {t:"3:30–3:35", n:"Variables HW Check", d:"Inspect :root in DevTools. Are all colors variables? Any raw hex left?", hl:"css"},
+    {t:"3:35–3:50", n:"Media Queries", d:"Viewport meta tag. @media (max-width: 768px) { }. Three breakpoints: 480 / 768 / 1024. Mobile-first thinking.", hl:"css"},
+    {t:"3:50–4:10", n:"Lab: Responsive Portfolio", d:"Flex-direction column on mobile for nav and cards. Adjust font sizes. No horizontal scroll. Test in DevTools device toolbar.", hl:"css"},
+    {t:"4:10–4:25", n:"CSS Week Showcase", d:"Each person opens their portfolio on DevTools mobile view. Quick round-robin show. Celebrate the progress.", hl:"css"},
+    {t:"4:25–4:30", n:"Homework Brief + JS Preview", d:"Show one JS-powered interaction to get them excited for next week.", hl:"break"},
+  ],
+  topics:["Viewport meta tag — required on every page","@media (max-width: Xpx) { }","Mobile-first vs desktop-first","Common breakpoints: 480px, 768px","flex-direction: column at breakpoint","display: none to hide elements on mobile","DevTools device toolbar (Ctrl+Shift+M)"],
+  hw:{name:"Fully Responsive Portfolio",desc:"Your portfolio must look good on mobile. Test with DevTools device toolbar at 375px width.",time:"~40 min",
+    list:["Viewport meta tag in head","Nav stacks vertically on screens under 768px","Project cards go single column on mobile","h1 font-size reduces on mobile","No horizontal scrollbar at any screen size","Test at: 375px (mobile), 768px (tablet), 1280px (desktop)","Screenshot all 3 sizes — bring to next session"]}
+ },
+
+ // ── WEEK 3: JS ────────────────────────────────────────────────
+ {
+  week:3, type:"js",
+  title:"JavaScript Fundamentals",
+  sub:"Variables, logic, and making decisions — the brain of the page",
+  schedule:[
+    {t:"3:30–3:35", n:"Portfolio Responsive Check", d:"Quick show of mobile screenshots. Flag anyone whose portfolio still has issues.", hl:"js"},
+    {t:"3:35–3:50", n:"JS Context", d:"What JS does that HTML+CSS can't. Where script tag goes (end of body) and why. console.log as your primary tool.", hl:"js"},
+    {t:"3:50–4:10", n:"Variables + Logic", d:"let vs const. Strings, numbers, booleans, null. if/else if/else. Comparison operators: ===, !==, >, <. Logical: && ||.", hl:"js"},
+    {t:"4:10–4:25", n:"Lab: Console Quiz", d:"3-question quiz in the console. prompt() for input, if/else to check, score tracked with let, final alert with result.", hl:"js"},
+    {t:"4:25–4:30", n:"Homework Brief", d:"", hl:"break"},
+  ],
+  topics:["script tag — placement matters","let and const (never var)","String, Number, Boolean, null, undefined","typeof operator","console.log — use it constantly","if / else if / else","===  !==  >  <  &&  ||"],
+  hw:{name:"Console Quiz — 5 Questions",desc:"Build quiz.html with a script tag. Use prompt() for input and alert() for output.",time:"~30 min",
+    list:["5 questions with prompt()","let score = 0 to track correct answers","if/else with === to check each answer","Score increments on correct answer","Final alert: 'You scored X/5'","Different message for score ≥ 3 vs < 3"]}
+ },
+ {
+  week:3, type:"js",
+  title:"DOM Manipulation",
+  sub:"Reach into the page and change it — this is where JS gets exciting",
+  schedule:[
+    {t:"3:30–3:35", n:"Quiz HW Review", d:"Check: score tracking correct? Different message based on score? Any using == instead of ===?", hl:"js"},
+    {t:"3:35–3:50", n:"The DOM + Selecting Elements", d:"DOM = page as a tree. document.getElementById, querySelector, querySelectorAll. Store in variables. Log them.", hl:"js"},
+    {t:"3:50–4:10", n:"Changing the Page", d:"innerHTML vs textContent. element.style.property. classList.add, .remove, .toggle — the big three.", hl:"js"},
+    {t:"4:10–4:25", n:"Lab: Dark Mode Toggle", d:"Button that calls classList.toggle('dark') on body. CSS .dark { } defines the dark theme using existing variables.", hl:"js"},
+    {t:"4:25–4:30", n:"Homework Brief", d:"", hl:"break"},
+  ],
+  topics:["document.getElementById()","document.querySelector() / querySelectorAll()","element.innerHTML and .textContent","element.style.property = 'value'","classList.add / remove / toggle","JS changes class → CSS defines the look","Separation of concerns principle"],
+  hw:{name:"Dark Mode on Your Portfolio",desc:"Add a working dark/light toggle button to your portfolio page.",time:"~35 min",
+    list:["Button in the header: 'Dark Mode'","JS: document.body.classList.toggle('dark') on click","CSS: body.dark { } overrides your CSS variables with dark values","Button text changes to 'Light Mode' when dark is active","Dark mode uses at least a dark background + light text","Bonus: localStorage.setItem to remember the choice on reload"]}
+ },
+ {
+  week:3, type:"js",
+  title:"Events & Functions",
+  sub:"Reacting to what the user does — clicks, typing, and submitting",
+  schedule:[
+    {t:"3:30–3:35", n:"Dark Mode Review", d:"Is toggle working? Is JS adding a class or changing inline styles? (Should be class.)", hl:"js"},
+    {t:"3:35–3:50", n:"Events", d:"addEventListener(type, callback). Click, input, keydown, submit. Event object (e). e.preventDefault() for forms.", hl:"js"},
+    {t:"3:50–4:05", n:"Functions", d:"Declaring functions. Parameters. Return values. Arrow functions. Calling from event listeners.", hl:"js"},
+    {t:"4:05–4:20", n:"Lab: Live Character Counter", d:"Textarea that shows remaining characters as user types. Turns red under 20. Uses 'input' event listener.", hl:"js"},
+    {t:"4:20–4:30", n:"Preview: Form Validation Tomorrow + HW Brief", d:"", hl:"break"},
+  ],
+  topics:["addEventListener('type', callback)","Event types: click, input, change, keydown, submit","The event object — e.target, e.target.value","e.preventDefault() — stop form submit","function declaration vs arrow function","Parameters and return values","this vs arrow function context"],
+  hw:{name:"Interactive Counter Component",desc:"Build a standalone component — a text area with character limit and live feedback.",time:"~30 min",
+    list:["Textarea with a 200 character limit","As user types: show '150 characters remaining'","When under 30: counter text turns orange","When under 10: counter text turns red","A clear button that resets the textarea and counter","All logic in clean named functions (no anonymous callbacks)"]}
+ },
+ {
+  week:3, type:"js",
+  title:"Form Validation",
+  sub:"Make the contact form actually check inputs before the user submits",
+  schedule:[
+    {t:"3:30–3:35", n:"Counter HW Review", d:"Is the counter using named functions? Is the color logic conditional on character count?", hl:"js"},
+    {t:"3:35–3:55", n:"Form Validation Logic", d:"e.preventDefault() on submit. querySelector each input. Check .value.trim() === ''. Check email .includes('@') and ('.'). Show errors in the DOM.", hl:"js"},
+    {t:"3:55–4:15", n:"Lab: Validate Portfolio Contact Form", d:"Add JS validation to the contact form in their portfolio. Name, email, message length. Show red error messages or green success.", hl:"js"},
+    {t:"4:15–4:25", n:"Intro to Arrays (Quick)", d:"What an array is. Push, length, accessing by index. Show a simple example: storing submitted names.", hl:"js"},
+    {t:"4:25–4:30", n:"Final Project Brief + Homework", d:"Explain Days 14–15 project deliverable. Let excitement build.", hl:"break"},
+  ],
+  topics:["e.preventDefault() on form submit","input.value.trim() — remove whitespace","Validation: empty check, email format, length","Creating error DOM elements with JS","Showing/hiding error messages","Basic arrays: [], .push(), .length, [index]","Clearing a form after success"],
+  hw:{name:"Full Portfolio Form Validation",desc:"The contact form in your portfolio must validate before submitting.",time:"~40 min",
+    list:["Name: error if empty","Email: error if missing @ or .","Message: error if less than 20 characters","Error messages appear below each field in red text","On success: show green 'Message sent!' and clear the form","e.preventDefault() prevents page reload","Bonus: disable submit button while form is invalid"]}
+ },
+
+ // ── WEEK 3 (cont): Project ──────────────────────────────────
+ {
+  week:3, type:"proj",
+  title:"Final Project — Build Day",
+  sub:"60–90 minutes of focused building. Everything from 13 days goes into one page.",
+  schedule:[
+    {t:"3:30–3:40", n:"Project Planning", d:"Write down: page name, sections (min 5), one JS feature. Draw a rough layout sketch on paper. No coding until plan is done.", hl:"proj"},
+    {t:"3:40–4:00", n:"HTML Sprint", d:"Build the full semantic skeleton first. No CSS yet. Instructor checks structure before CSS begins.", hl:"proj"},
+    {t:"4:00–4:20", n:"CSS Sprint", d:"Apply theme (Google Fonts + variables + flexbox). Style all sections. Make it presentable.", hl:"proj"},
+    {t:"4:20–4:30", n:"JS Feature + Overflow Time (to 5:00)", d:"Add at least one JS feature (dark mode, form validation, or something of their choice). Use the extra 30 min if needed.", hl:"proj"},
+  ],
+  topics:["Planning before coding — sketch first","Semantic HTML skeleton before any CSS","CSS variables for a consistent theme","Flexbox for all layout sections","At least one JS interaction","Responsive at 768px","Clean, commented code"],
+  hw:{name:"Finish Everything Tonight",desc:"Tomorrow is presentation day. Tonight: complete, polish, and test your page.",time:"~60 min",
+    list:["All sections complete in HTML","CSS fully applied — no unstyled sections","Google Fonts and CSS variables in use","Responsive on mobile (test at 375px)","At least one working JS feature","No broken links, no missing images","Prepare what you'll say: what you built, one challenge you solved"]}
+ },
+ {
+  week:3, type:"proj",
+  title:"Final Project — Present & Deploy",
+  sub:"Show what you built, get feedback, and put it live on the internet",
+  schedule:[
+    {t:"3:30–3:40", n:"Last-Minute Fixes", d:"10 min only. Fix critical bugs. No new features — polish only.", hl:"proj"},
+    {t:"3:40–4:10", n:"Presentations", d:"Each person: 3 min on projector. Show the page, explain 3 things you built, name one challenge you solved. Trainer + peers give one positive + one suggestion.", hl:"proj"},
+    {t:"4:10–4:25", n:"Deploy to Netlify", d:"Go to app.netlify.com/drop. Drag the project folder. Copy the live URL. Everyone visits each other's live sites.", hl:"proj"},
+    {t:"4:25–4:30", n:"What Comes Next", d:"CSS Grid, JS ES6 (arrays, objects, fetch), a framework. Recommend: The Odin Project, javascript.info.", hl:"proj"},
+  ],
+  topics:["Presenting technical work clearly","Code review — giving good feedback","Deploying via Netlify Drop","What is GitHub / version control (intro)","What to learn next: CSS Grid, JS ES6, React","Building in public — share your work"],
+  hw:{name:"Share It (Bonus)",desc:"You've earned it — share your work.",time:"Optional",
+    list:["Share your Netlify link with friends or family","Post on LinkedIn: 'Built my first webpage from scratch in 15 days'","Write 3 things you learned and 3 things you want to learn next","Star the Odin Project on GitHub and start Week 1","Look up one thing that confused you this week and read the MDN page"]}
+ },
+];
+
+const weekNames = {1:"Week 1 · HTML",2:"Week 2 · CSS",3:"Week 3 · JS + Project"};
+const typeLabel = {html:"HTML",css:"CSS",js:"JavaScript",proj:"Project"};
+const hlClass   = {html:"hl-html",css:"hl-css",js:"hl-js",proj:"hl-proj",break:"hl-break"};
+
+let current = 0;
+
+function buildPanel(d, idx) {
+  const n = String(idx+1).padStart(2,'0');
+  const rows = d.schedule.map(s=>`
+    <div class="srow">
+      <div class="stime">${s.t}</div>
+      <div class="sact ${hlClass[s.hl]||''}">
+        <div class="sname">${s.n}</div>
+        ${s.d?`<div class="sdetail">${s.d}</div>`:''}
+      </div>
+    </div>`).join('');
+
+  const topics = d.topics.map(t=>`<li>${t}</li>`).join('');
+  const hwList = d.hw.list.map(l=>`<li>${l}</li>`).join('');
+
+  const el = document.createElement('div');
+  el.className = 'day-panel';
+  el.id = 'p'+idx;
+  el.innerHTML = `
+    <div class="dh">
+      <div class="dh-left">
+        <div class="dh-meta">Day ${n} · Week ${d.week} · ${weekNames[d.week].split('·')[1].trim()}</div>
+        <div class="dh-title">${d.title}</div>
+        <div class="dh-sub">${d.sub}</div>
+      </div>
+      <span class="badge badge-${d.type}">${typeLabel[d.type]}</span>
+    </div>
+
+    <p class="slabel">Session — 3:30 to 4:30 PM</p>
+    <div class="session-card">${rows}</div>
+
+    <div class="two">
+      <div class="box">
+        <div class="box-label">Topics Covered</div>
+        <ul class="tlist">${topics}</ul>
+      </div>
+      <div class="box">
+        <div class="box-label">Homework</div>
+        <div class="hw hw-${d.type}" style="margin-bottom:0;border:none;padding:0;background:none">
+          <div class="hw-tag">📝 ${d.hw.name}</div>
+          <div class="hw-desc">${d.hw.desc}</div>
+          <ul class="hw-list">${hwList}</ul>
+          <span class="hw-time">⏱ ${d.hw.time}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pnav">
+      <button class="pnav-btn" onclick="goTo(${idx-1})" ${idx===0?'disabled':''}>← Prev</button>
+      <span class="pnav-label">DAY ${n} / 15</span>
+      <button class="pnav-btn" onclick="goTo(${idx+1})" ${idx===14?'disabled':''}>Next →</button>
+    </div>`;
+  return el;
+}
+
+// Week tabs
+const ws = document.getElementById('weekStrip');
+[1,2,3].forEach(w=>{
+  const b=document.createElement('button');
+  b.className='wtab'+(w===1?' active':'');
+  b.textContent=weekNames[w];
+  b.onclick=()=>goTo(days.findIndex(d=>d.week===w));
+  b.id='wt'+w;
+  ws.appendChild(b);
+});
+
+// Day tabs + panels
+const ds = document.getElementById('dayStrip');
+const mn = document.getElementById('main');
+days.forEach((d,i)=>{
+  const b=document.createElement('button');
+  b.className='dtab';
+  b.dataset.type=d.type;
+  b.textContent='Day '+(i+1);
+  b.onclick=()=>goTo(i);
+  b.id='dt'+i;
+  ds.appendChild(b);
+  mn.appendChild(buildPanel(d,i));
+});
+
+function goTo(i){
+  if(i<0||i>14)return;
+  current=i;
+  document.querySelectorAll('.day-panel').forEach((p,j)=>p.classList.toggle('active',j===i));
+  document.querySelectorAll('.dtab').forEach((t,j)=>t.classList.toggle('active',j===i));
+  document.querySelectorAll('.wtab').forEach((t,j)=>t.classList.toggle('active',j+1===days[i].week));
+  document.getElementById('dt'+i).scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+goTo(0);
+</script>
+</body>
+</html>
