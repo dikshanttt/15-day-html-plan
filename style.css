@@ -6,9 +6,32 @@
 
 body {
   font-family: "Segoe UI", Arial, sans-serif;
-  background: #1f2937;
   color: #f4f7fb;
   line-height: 1.6;
+  background: linear-gradient(
+    -45deg,
+    #111827,
+    #1f2937,
+    #374151,
+    #1e3a8a
+  );
+  background-size: 400% 400%;
+  animation: gradient 8s ease infinite;
+
+  min-height: 100vh;
+  margin: 0;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .page {
@@ -21,9 +44,36 @@ body {
 }
 
 .hero {
-  background: linear-gradient(135deg, #0f172a, #1d4ed8, #2563eb);
+  background: linear-gradient(
+    135deg,
+    #0f172a,
+    #1d4ed8,
+    #2563eb,
+    #3b82f6,
+    #0f172a
+  );
+  background-size: 400% 400%;
+  animation: gradientFlow 12s ease infinite;
   color: #fff;
   padding: 48px 36px;
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .hero h1 {
@@ -203,7 +253,7 @@ body {
 
 .outcome ul {
   display: grid;
-  color: #000000;
+  color:black;
   grid-template-columns: repeat(2, 1fr);
   gap: 8px;
   padding-left: 20px;
@@ -242,10 +292,37 @@ footer {
 
 /* Day Page Styles */
 .day-header {
-  background: linear-gradient(135deg, #0f172a, #1d4ed8, #2563eb);
+  background: linear-gradient(
+    135deg,
+    #0f172a,
+    #1d4ed8,
+    #2563eb,
+    #3b82f6,
+    #0f172a
+  );
+  background-size: 400% 400%;
+  animation: gradientFlow 12s ease infinite;
   color: #fff;
   padding: 48px 36px;
   text-align: center;
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .day-header h1 {
