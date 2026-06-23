@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 9 - Responsive Design</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <header class="day-header">
+      <h1>Day 9: Responsive Design</h1>
+      <p class="day-tag">Mobile-First Thinking</p>
+    </header>
+
+    <main class="day-content">
+      <section class="content-block">
+        <h2>What You'll Learn Today</h2>
+        <ul>
+          <li>What responsive design means</li>
+          <li>Use media queries to adapt to different screen sizes</li>
+          <li>Create mobile-friendly layouts</li>
+          <li>Test your site on different devices</li>
+        </ul>
+      </section>
+
+      <section class="content-block">
+        <h2>Why Responsive Design?</h2>
+        <p>People view websites on phones, tablets, and desktops. Your site needs to look good on all of them!</p>
+        <ul>
+          <li>Mobile users make up 60%+ of web traffic</li>
+          <li>Google ranks mobile-friendly sites higher</li>
+          <li>One responsive site vs. separate mobile site = less work</li>
+          <li>Better user experience = happier users</li>
+        </ul>
+      </section>
+
+      <section class="content-block">
+        <h2>The Viewport Meta Tag</h2>
+        <p>Always include this in your HTML &lt;head&gt;:</p>
+        <div class="code-block">
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+        </div>
+        <p>This tells browsers to use the device width and not zoom in.</p>
+      </section>
+
+      <section class="content-block">
+        <h2>Media Queries</h2>
+        <p>Media queries let you apply CSS only for certain screen sizes:</p>
+        <div class="code-block">
+@media (max-width: 600px) {<br>
+&nbsp;&nbsp;body {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;font-size: 14px;<br>
+&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;.container {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;padding: 10px;<br>
+&nbsp;&nbsp;}<br>
+}
+        </div>
+      </section>
+
+      <section class="content-block">
+        <h2>Common Breakpoints</h2>
+        <div class="tag-list">
+          <div class="tag-item">
+            <strong>Mobile:</strong> 0-480px
+          </div>
+          <div class="tag-item">
+            <strong>Tablet:</strong> 481px-768px
+          </div>
+          <div class="tag-item">
+            <strong>Desktop:</strong> 769px-1024px
+          </div>
+          <div class="tag-item">
+            <strong>Large Desktop:</strong> 1025px+
+          </div>
+        </div>
+      </section>
+
+      <section class="content-block">
+        <h2>Responsive Grid Example</h2>
+        <div class="code-block">
+.grid {<br>
+&nbsp;&nbsp;display: grid;<br>
+&nbsp;&nbsp;grid-template-columns: repeat(3, 1fr);<br>
+&nbsp;&nbsp;gap: 20px;<br>
+}<br>
+<br>
+@media (max-width: 768px) {<br>
+&nbsp;&nbsp;.grid {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid-template-columns: repeat(2, 1fr);<br>
+&nbsp;&nbsp;}<br>
+}<br>
+<br>
+@media (max-width: 480px) {<br>
+&nbsp;&nbsp;.grid {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid-template-columns: 1fr;<br>
+&nbsp;&nbsp;}<br>
+}
+        </div>
+      </section>
+
+      <section class="content-block">
+        <h2>Responsive Typography</h2>
+        <div class="code-block">
+h1 {<br>
+&nbsp;&nbsp;font-size: 36px;<br>
+}<br>
+<br>
+@media (max-width: 768px) {<br>
+&nbsp;&nbsp;h1 {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;font-size: 28px;<br>
+&nbsp;&nbsp;}<br>
+}<br>
+<br>
+@media (max-width: 480px) {<br>
+&nbsp;&nbsp;h1 {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;font-size: 20px;<br>
+&nbsp;&nbsp;}<br>
+}
+        </div>
+      </section>
+
+      <section class="content-block">
+        <h2>Your Task for Today</h2>
+        <p><strong>Make your site responsive:</strong></p>
+        <ul>
+          <li>Add viewport meta tag to your HTML</li>
+          <li>Create media queries for tablet (768px) and mobile (480px)</li>
+          <li>Adjust padding, margins, and font sizes</li>
+          <li>Test using browser DevTools (F12)</li>
+          <li>Try resizing your browser window</li>
+        </ul>
+      </section>
+
+      <div class="nav-buttons">
+        <a href="day8.html" class="btn-back">← Day 8</a>
+        <a href="index.html" class="btn-back">Back to Plan</a>
+        <a href="day10.html" class="btn-next">Day 10 →</a>
+      </div>
+    </main>
+
+    <footer>
+      Day 9 of 15 - Mobile-first is the modern way to design!
+    </footer>
+  </div>
+</body>
+</html>

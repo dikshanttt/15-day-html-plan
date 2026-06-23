@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 5 - Tables and Multi-Page Navigation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <header class="day-header">
+      <h1>Day 5: Tables and Multi-Page Navigation</h1>
+      <p class="day-tag">Advanced HTML</p>
+    </header>
+
+    <main class="day-content">
+      <section class="content-block">
+        <h2>What You'll Learn Today</h2>
+        <ul>
+          <li>Create tables to display data</li>
+          <li>Build multi-page websites</li>
+          <li>Organize your project in folders</li>
+          <li>Create consistent navigation across pages</li>
+        </ul>
+      </section>
+
+      <section class="content-block">
+        <h2>HTML Tables</h2>
+        <p>Display data in rows and columns with tables:</p>
+        <div class="code-block">
+&lt;table&gt;<br>
+&nbsp;&nbsp;&lt;tr&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Header 1&lt;/th&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Header 2&lt;/th&gt;<br>
+&nbsp;&nbsp;&lt;/tr&gt;<br>
+&nbsp;&nbsp;&lt;tr&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Data 1&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Data 2&lt;/td&gt;<br>
+&nbsp;&nbsp;&lt;/tr&gt;<br>
+&lt;/table&gt;
+        </div>
+      </section>
+
+      <section class="content-block">
+        <h2>Table Elements</h2>
+        <div class="tag-list">
+          <div class="tag-item">
+            <strong>&lt;table&gt;</strong> - Container for the table
+          </div>
+          <div class="tag-item">
+            <strong>&lt;tr&gt;</strong> - Table row
+          </div>
+          <div class="tag-item">
+            <strong>&lt;th&gt;</strong> - Table header cell
+          </div>
+          <div class="tag-item">
+            <strong>&lt;td&gt;</strong> - Table data cell
+          </div>
+          <div class="tag-item">
+            <strong>&lt;thead&gt;</strong> - Groups header rows
+          </div>
+          <div class="tag-item">
+            <strong>&lt;tbody&gt;</strong> - Groups body rows
+          </div>
+          <div class="tag-item">
+            <strong>&lt;tfoot&gt;</strong> - Groups footer rows
+          </div>
+        </div>
+      </section>
+
+      <section class="content-block">
+        <h2>Project Folder Structure</h2>
+        <p>Organize your files like this:</p>
+        <div class="code-block">
+my-website/<br>
+├── index.html<br>
+├── about.html<br>
+├── contact.html<br>
+├── css/<br>
+│&nbsp;&nbsp; └── style.css<br>
+├── images/<br>
+│&nbsp;&nbsp; └── my-photo.jpg<br>
+└── pages/<br>
+&nbsp;&nbsp;&nbsp;&nbsp; └── recipes.html
+        </div>
+      </section>
+
+      <section class="content-block">
+        <h2>Multi-Page Navigation</h2>
+        <p>Create consistent navigation on all pages:</p>
+        <div class="code-block">
+&lt;nav&gt;<br>
+&nbsp;&nbsp;&lt;a href="index.html"&gt;Home&lt;/a&gt;<br>
+&nbsp;&nbsp;&lt;a href="about.html"&gt;About&lt;/a&gt;<br>
+&nbsp;&nbsp;&lt;a href="contact.html"&gt;Contact&lt;/a&gt;<br>
+&lt;/nav&gt;
+        </div>
+      </section>
+
+      <section class="content-block">
+        <h2>Linking Between Pages</h2>
+        <p>From <strong>index.html</strong> to <strong>about.html</strong> (same folder):</p>
+        <div class="code-block">
+&lt;a href="about.html"&gt;Go to About&lt;/a&gt;
+        </div>
+        <p>From <strong>pages/recipes.html</strong> back to <strong>index.html</strong>:</p>
+        <div class="code-block">
+&lt;a href="../index.html"&gt;Go Home&lt;/a&gt;
+        </div>
+        <p>The <code>..</code> means "go up one folder level"</p>
+      </section>
+
+      <section class="content-block">
+        <h2>Complete Table Example</h2>
+        <div class="code-block">
+&lt;table&gt;<br>
+&nbsp;&nbsp;&lt;thead&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Name&lt;/th&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Email&lt;/th&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Age&lt;/th&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+&nbsp;&nbsp;&lt;/thead&gt;<br>
+&nbsp;&nbsp;&lt;tbody&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;John&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;john@email.com&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;25&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+&nbsp;&nbsp;&lt;/tbody&gt;<br>
+&lt;/table&gt;
+        </div>
+      </section>
+
+      <section class="content-block">
+        <h2>Your Task for Today</h2>
+        <p><strong>Create a multi-page site:</strong></p>
+        <ul>
+          <li>Create 3 pages: index.html, about.html, contact.html</li>
+          <li>Add consistent navigation to all pages</li>
+          <li>Create at least one table with sample data</li>
+          <li>Use proper folder organization (css/ and images/ folders)</li>
+        </ul>
+      </section>
+
+      <div class="nav-buttons">
+        <a href="day4.html" class="btn-back">← Day 4</a>
+        <a href="index.html" class="btn-back">Back to Plan</a>
+        <a href="day6.html" class="btn-next">Day 6 →</a>
+      </div>
+    </main>
+
+    <footer>
+      Day 5 of 15 - You've completed HTML basics! CSS comes next!
+    </footer>
+  </div>
+</body>
+</html>
